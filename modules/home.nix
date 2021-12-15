@@ -9,8 +9,9 @@
 
     fish = {
       enable = true;
-      shellInit = ''
+      interactiveShellInit = ''
       cat /Users/stevensherry/.nix-profile/etc/profile.d/nix.sh | /Users/stevensherry/.nix-profile/bin/babelfish | source
+      /Users/stevensherry/.nix-profile/bin/any-nix-shell fish --info-right | source
       '';
       shellAliases = {
         ls = "exa -G --color auto --icons -a -s type";
@@ -146,29 +147,32 @@
   home.packages = with pkgs; [
     _1password
     ansible
+    any-nix-shell
     argocd
     babelfish
-    bpytop
     drone-cli
     exercism
     ffmpeg
     glow
     go-task
-    kubernetes-helm
     imagemagick
+    kubernetes-helm
     kubectl
     (lunarvim.override { homeDir = "/Users/stevensherry"; })
     lynx
     minikube
+    neofetch
     nerdfonts
     # Useful for getting sha256 hashes for github repos
     nix-prefetch-github
     neovim
+    nmap
     # podman # -- Currently doesn't work due to being unable to find gvproxy
     # quickemu
     qemu 
     ripgrep
     tanka
+    thefuck
     youtube-dl
   ];
 }
